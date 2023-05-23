@@ -1,0 +1,105 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load rupiah_tags %}
+
+{% block content %}
+
+  <div id="nav" class="container">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid main-color">
+          <a class="navbar-brand" href="#">
+              <div class="d-flex">
+                <img src="{% static 'img/icon.png' %}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top me-2">
+                <h3 class="ms-2"><b>BUNGA<br>PEDULI</b></h3>
+              </div>
+          </a>
+
+          <form role="search">
+              <input class="form-control me-2 rounded-pill" type="search" placeholder="Cari Donasi" aria-label="Search">
+          </form>
+
+          <div class="d-flex profile">
+            <p class="mt-1 me-2"><b>Profile</b></p>
+            <img src="{% static 'img/profile.png' %}" alt="">
+          </div>
+
+      </div>
+    </nav> 
+  </div>
+
+
+  <section id="hero">
+    <div class="container text-center">
+      <h1 class="">AYO DONASI</h1>
+      <p class="py-2">Berikan kebahagiaan untuk mereka</p>
+    </div>
+  </section>
+
+  <section id="option">
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-1 rounded-4">GALANG <br> DANA</button>
+        </div>
+        <div class="col">
+          <a class="btn btn-2 rounded-4" href="{% url 'list-donasi' %}">DONASI</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="top">
+    <div class="container">
+      <div class="top text-center rounded-4">
+        <h2 class="pt-4">TOP FAMOUS DONASI</h2>
+
+        <div class="row my-5 pb-5 justify-content-center">
+
+          {% for donation in donations %}
+          <div class="card card-donasi mx-4 rounded-4 col" style="width: 18rem;">
+            <img src="{{donation.imageURL}}" class="card-img-top mt-2" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{ donation.name|capfirst|truncatechars:25 }}</h5>
+              <p>{{ donation.collected|rupiah_format }}</p>
+            </div>
+          </div>
+          {% endfor %}
+
+      </div>
+    </div>
+  </section>
+
+  <footer id="footer">
+    <div class="container pt-5">
+      <div class="row row-cols-2 pb-3">
+        <div class="col">
+          <h3>Tentang Kami</h3><br>
+          <p>Kami adalah Organisasi donasi yang berkomitmen untuk menginspirasi perubahan positif di dunia ini. 
+            Melalui platform kami, kami mempertemukan para dermawan dengan proyek-proyek dan inisiatif yang memiliki dampak sosial yang signifikan. 
+            Dengan fokus pada transparansi, keamanan, dan efektivitas, kami memberikan kesempatan kepada individu, kelompok, 
+            dan organisasi untuk berkontribusi dalam meningkatkan kehidupan orang lain. Dengan semangat kolaborasi dan kebaikan hati, kami berusaha untuk menciptakan dunia yang lebih baik bagi mereka yang membutuhkan.</p>
+        </div>
+
+        <div class="col">
+          <h3>Kontak Kami</h3><br>
+          <p>Email: bungapeduli@gmail.com</p>
+          <p>Phone : 021-2345660</p>
+          <p>Mobile : 081234567890</p>
+          
+          <div class="sec-foot">
+          <div class="row row-cols-2">
+            <img src="{% static 'img/Youtube.png' %}" alt="" class="sosmed col m-1">
+            <img src="{% static 'img/Subtract.png' %}" alt="" class="sosmed col m-1">
+            <img src="{% static 'img/Whatsapp.png' %}" alt="" class="sosmed col m-1">
+            <img src="{% static 'img/Union.png' %}" alt="" class="sosmed col m-1">
+            <img src="{% static 'img/Facebook.png' %}" alt="" class="sosmed col m-1">
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+{% endblock content %}

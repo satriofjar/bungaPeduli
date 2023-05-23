@@ -1,0 +1,46 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load rupiah_tags %}
+
+{% block content %}
+
+<section id="donasi">
+    <div class="nav-donasi mb-5">  
+      <div class="container">
+        <div class="row text-start">
+          <a class="col-4" href="{% url 'home' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
+          <h1 class="col-8 ps-5">DONASI</h1>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div class="list-donasi">
+
+        {% for donasion in donasions %}
+
+        <div class="donasi my-3">
+          <div class="row ms-5">
+            <div class="col-4 text-end">
+              <img src="{{ donasion.imageURL }}" alt="haha" class="img-fluid rounded-4">
+            </div>
+            <div class="col-8">
+              <a href="#"><h3>{{ donasion.name|capfirst }}</h3></a>
+              <h4>{{ donasion.collected | rupiah_format  }}</h4>
+              <div class="row">
+              <p class="col">Terkumpul dari {{ donasion.fund_target | rupiah_format }}</p>
+              <p class="col">{{ donasion.time_span }} hari</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </section>
+
+{% endblock content %}

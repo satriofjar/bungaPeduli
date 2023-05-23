@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=MuseoModerno:ital,wght@1,100&family=Poppins&display=swap');
+  
+  
+:root{
+    --mainColor:#FF5D84;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.test{
+    border: solid black 2px;
+}
+
+html, body{
+    padding: 0;
+    margin: 0;
+}
+
+body a {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a:hover,
+a:active,
+a:focus {
+    outline: none;
+    text-decoration: none;
+}
+
+#nav .navbar-collapse {
+    margin-left: 100px;
+}
+
+#nav .navbar-brand h3{
+    color: var(--mainColor);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'MuseoModerno', sans-serif;
+}
+
+#nav input{
+    background-color: var(--mainColor);
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff !important;
+}
+
+#nav .profile p{
+    color: #515151;
+    font-size: 20px;
+}
+
+#nav .profile img{
+    max-width: 40px;
+    height: 40px;
+}
+
+
+/* =======HERO SECTION======= */
+
+#hero{
+    background-image: url("../img/heroImage.png");
+    background-size: cover;
+    height: 300px;
+}
+
+#hero h1{
+    color: #FFDD98;
+    font-size: 50px;
+    letter-spacing: 0.24em;
+    padding-top: 100px;
+}
+
+#hero p{
+    color: #fff;
+    border-radius: 18px;
+    background-color:#B62346;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* =======OPTION======= */
+
+#option{
+    margin: 60px 0;
+}
+
+#option .btn{
+    color: #fff;
+    background-color:#FF5D84;
+    max-height: 90px;
+    letter-spacing: 1px;
+}
+
+#option .btn-1{
+    font-size: 30px;
+    font-weight: 800;
+    padding: 5px 40px;
+}
+
+#option .btn-2{
+    font-size: 30px;
+    font-weight: 800;
+    padding: 25px 40px;
+}
+
+
+
+/* =======TOP DONASI======= */
+
+#top .top{
+    background-color:#FFA3A3;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#top h2{
+    color: #962929;
+    font-weight: 600;
+    font-size: 35px;
+}
+
+#top .card-donasi{
+    position: relative;
+    max-width: 250px;
+    min-height: 250px;
+    max-height: 370px;
+    margin: 0 auto;
+}
+
+#top .card-donasi .card-body{
+    position: absolute;
+    width: 230px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#top .card-donasi .card-title{
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#top .card-donasi p{
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+/* =======DONASI======= */
+
+#donasi .nav-donasi{
+    background-color: var(--mainColor);
+}
+
+#donasi .nav-donasi h1{
+    color: #fff;
+    font-weight: 800;
+    font-size: 50px;
+}
+
+#donasi .list-donasi .donasi img{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#donasi .list-donasi .donasi h3{
+    color: #515151;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#donasi .list-donasi .donasi h4{
+    color: var(--mainColor);
+    font-weight: 700;
+    font-size: 25px;
+}
+#donasi .list-donasi .donasi p{
+    color: #515151;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+
+#footer{
+    background-color: var(--mainColor);
+    color: #fff;
+}
+
+#footer .sec-foot{
+    max-width: 150px;
+}
+
+#footer .sosmed {
+    max-width: 50px;
+}
