@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="category">
+    <div class="nav-donasi mb-5 py-3">  
+        <div class="container">
+          <div class="row text-start">
+            <a class="col-2" href="{% url 'home' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
+            <h1 class="col-10 ps-5">PILIH KATEGORI GALANG DANA</h1>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="categories">
+            <a href="{% url 'form-galang-dana' %}">
+                <div class="category my-5 row rounded-3">
+                    <img src="{% static 'img/kesehatan.png' %}" alt="Logo" class="col ms-3 mt-3">
+                    <h3 class="col mt-3 ms-5">KESEHATAN</h3>
+                </div>
+            </a>
+            
+            <a href="{% url 'form-galang-dana' %}">
+                <div class="category my-5 rounded-3 row">
+                    <img src="{% static 'img/pendidikan.png' %}" alt="Logo" class="col ms-3 mt-2">
+                    <h3 class="col mt-3 ms-5"><strong>PENDIDIKAN</strong></h3>
+                </div>
+            </a>
+    
+            <a href="{% url 'form-galang-dana' %}">
+                <div class="category my-5 rounded-3 row">
+                    <img src="{% static 'img/bencana.png' %}" alt="Logo" class="col ms-3 mt-3">
+                    <h3 class="col mt-3 ms-5"><strong>BENCANA ALAM</strong> </h3>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}

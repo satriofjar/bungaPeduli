@@ -5,7 +5,7 @@
 {% block content %}
 
 <section id="donasi">
-    <div class="nav-donasi mb-5">  
+    <div class="nav-donasi mb-5 py-3">  
       <div class="container">
         <div class="row text-start">
           <a class="col-4" href="{% url 'home' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
@@ -23,11 +23,15 @@
         <div class="donasi my-3">
           <div class="row ms-5">
             <div class="col-4 text-end">
-              <img src="{{ donasion.imageURL }}" alt="haha" class="img-fluid rounded-4">
+              <img src="{{ donasion.imageURL }}" alt="" class="img-fluid rounded-4">
             </div>
             <div class="col-8">
               <a href="#"><h3>{{ donasion.name|capfirst }}</h3></a>
+              {% if donasi.collected == None %}
+              <h4>Rp -</h4>
+              {% else %}
               <h4>{{ donasion.collected | rupiah_format  }}</h4>
+              {% endif %}
               <div class="row">
               <p class="col">Terkumpul dari {{ donasion.fund_target | rupiah_format }}</p>
               <p class="col">{{ donasion.time_span }} hari</p>

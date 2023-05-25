@@ -1,0 +1,108 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section id="login">
+    <div class="nav-donasi mb-5 py-3">  
+        <div class="container">
+          <div class="row text-start">
+            <a class="col-4" href="{% url 'home' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
+            {% if page == 'login' %}
+            <h1 class="col-8 ps-5">LOGIN</h1>
+            {% else %}
+            <h1 class="col-8 ps-5">REGISTER</h1>
+            {% endif %}
+          </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col mx-5">
+              {% if page == 'login' %}
+                <form method="post" class="ps-4 py-4">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="inputEmail" class="form-label">Email</label>
+                      <div class="">
+                        <input type="email" class="form-control w-75" id="inputEmail" name="email" placeholder="example@mail.com">
+                      </div>
+                    </div>
+                    
+                    <div class="mb-3 pt-4">
+                      <label for="exampleInputEmail1" class="form-label">Password</label>
+                      <div class="">
+                        <input type="password" class="form-control w-75" id="exampleInputEmail1" name="password">
+                      </div>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <br>
+                    <br>
+                  </form>
+
+              {% else %}
+              <form method="post" class="ps-4 py-4">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                  <label class="form-label">Name</label>
+                  {{ form.name }}
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Username</label>
+                  {{ form.username }}
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Phone</label>
+                  {{ form.phone }}
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Email</label>
+                  {{ form.email }}
+                </div>
+                
+                <div class="mb-3 pt-4">
+                  <label class="form-label">Password</label>
+                  {{ form.password1 }}
+                </div>
+                
+                <div class="mb-3 pt-4">
+                  <label class="form-label">Confirm Password</label>
+                  {{ form.password2 }}
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+              </form>
+              {% endif %}
+            </div>
+
+            <div class="col ms-5 mt-5">
+                <div class="lcard rounded-4 text-center">
+                    <h3 class="welc py-5">SELAMAT DATANG</h3> 
+                    <p>Daftarkan dirimu <br>
+                        supaya kami lebih <br>
+                        bisa mengenalmu</p>
+
+                        <div class="d-flex tlogo mb-4 justify-content-center">
+                            <img src="{% static 'img/logo-white.png' %}" alt="Logo" class="d-inline-block align-text-top mt-2">
+                            <h3 class="ms-2"><b>BUNGA<br>PEDULI</b></h3>
+                          </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock content %}

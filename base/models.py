@@ -1,6 +1,4 @@
 from django.db import models
-
-# Create your models here.
 from django.contrib.auth.models import AbstractUser
 from .validators import validate_file_size
 
@@ -20,8 +18,6 @@ class User(AbstractUser):
             url = ''
         return url
 
-    def __str__(self) -> str:
-        return self.name
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -34,6 +30,7 @@ class Donation(models.Model):
     fund_target = models.BigIntegerField(null=True, blank=True)
     beneficiary = models.TextField(null=True)
     time_span = models.IntegerField(null=True)
+    created = models.DateTimeField(auto_now_add=True)
 
     thumbnail = models.ImageField(blank=True, null=True, validators=[validate_file_size])
 
@@ -46,15 +43,11 @@ class Donation(models.Model):
             url = ''
         return url
 
-    def __str__(self) -> str:
-        return str(self.name)
-
 
 class Donator(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     donation = models.ForeignKey(Donation, on_delete=models.CASCADE, null=True) 
     amount = models.BigIntegerField(null=True)
     comment = models.TextField(null=True, blank=True)
-
-    def __str__(self) -> str:
-        return self.user.name
+    paid = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)

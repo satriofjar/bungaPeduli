@@ -18,10 +18,16 @@
               <input class="form-control me-2 rounded-pill" type="search" placeholder="Cari Donasi" aria-label="Search">
           </form>
 
+          {% if request.user.is_authenticated %}
           <div class="d-flex profile">
-            <p class="mt-1 me-2"><b>Profile</b></p>
+            <p class="mt-1 me-2"><b>{{ request.user.username }}</b></p>
             <img src="{% static 'img/profile.png' %}" alt="">
           </div>
+          {% else %}
+
+          <a class="btn btn-primary py-2 px-4" href="{% url 'login' %}">Login</a>
+
+          {% endif %}
 
       </div>
     </nav> 
@@ -39,7 +45,7 @@
     <div class="container text-center">
       <div class="row">
         <div class="col">
-          <button class="btn btn-1 rounded-4">GALANG <br> DANA</button>
+          <a class="btn btn-1 rounded-4" href="{% url 'kategori' %}">GALANG <br> DANA</a>
         </div>
         <div class="col">
           <a class="btn btn-2 rounded-4" href="{% url 'list-donasi' %}">DONASI</a>
@@ -57,7 +63,7 @@
 
           {% for donation in donations %}
           <div class="card card-donasi mx-4 rounded-4 col" style="width: 18rem;">
-            <img src="{{donation.imageURL}}" class="card-img-top mt-2" alt="...">
+            <img src="{{donation.imageURL}}" class="card-img-top mt-2" alt="">
             <div class="card-body">
               <h5 class="card-title">{{ donation.name|capfirst|truncatechars:25 }}</h5>
               <p>{{ donation.collected|rupiah_format }}</p>
