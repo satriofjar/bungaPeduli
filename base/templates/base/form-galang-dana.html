@@ -17,41 +17,33 @@
             <form method="post" class="ps-4 py-4" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="mb-3">
-                  <label for="exampleInputEmail1" class="form-label">Judul Donasi</label>
+                  <label class="form-label">Judul Donasi</label>
                   {{ form.name }}
-                  <!-- <div class="">
-                    <input type="text" class="form-control w-75" id="exampleInputEmail1" name="name">
-                  </div> -->
                 </div>
                 
                 <div class="mb-3 pt-4">
-                  <label for="exampleInputEmail1" class="form-label">Target Dana</label>
+                  <label class="form-label">Target Dana</label>
                   {{ form.fund_target }}
-                  <!-- <div class="">
-                    <input type="text" class="form-control w-75" id="exampleInputEmail1" name="target-dana">
-                  </div> -->
                 </div>
 
                 <div class="mb-3 pt-4">
-                  <label for="exampleInputEmail1" class="form-label">Lama Galang Dana Berlangsung</label>
+                  <label class="form-label">Lama Galang Dana Berlangsung</label>
                   {{ form.time_span }}
-                  <!-- <div class="">
-                    <input type="text" class="form-control w-75" id="exampleInputEmail1" name="lama-gdana">
-                  </div> -->
                 </div>
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Thumbnail</label>
                     {{ form.thumbnail }}
-                    <!-- <input class="form-control w-75" type="file" id="formFile" name="image"> -->
                 </div>
 
                 <div class="mb-3 pt-4">
-                  <label for="exampleInputEmail1" class="form-label">Cerita Penggalangan Dana</label>
+                  <label class="form-label">Penerima Dana</label>
                   {{ form.beneficiary }}
-                  <!-- <div class="">
-                    <textarea class="form-control w-75" id="exampleFormControlTextarea1" rows="3" name="cerita"></textarea>
-                  </div> -->
+                </div>
+
+                <div class="mb-3 pt-4">
+                  <label class="form-label">Cerita Penggalangan Dana</label>
+                  {{ form.fundraising_story }}
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>

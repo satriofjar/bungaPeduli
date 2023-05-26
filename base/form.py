@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.forms import ModelForm
-from . models import User, Donation
+from . models import User, Donation, Donator
 
 
 class MyUserCreationForm(UserCreationForm):
@@ -28,9 +28,23 @@ class DonationForm(ModelForm):
         self.fields['name'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['fund_target'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['beneficiary'].widget.attrs.update({'class': 'form-control w-75'})
+        self.fields['fundraising_story'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['time_span'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['thumbnail'].widget.attrs.update({'class': 'form-control w-75'})
 
     class Meta:
         model = Donation
         exclude = ['user', 'collected', 'created']
+
+class DonatorForm(ModelForm):
+        
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Override the default widget attributes with Bootstrap classes
+        self.fields['amount'].widget.attrs.update({'class': 'form-control w-75'})
+        self.fields['comment'].widget.attrs.update({'class': 'form-control w-75'})
+        self.fields['payment_method'].widget.attrs.update({'class': 'form-control w-75'})
+
+    class Meta:
+        model = Donator
+        fields = ['amount', 'comment', 'payment_method']

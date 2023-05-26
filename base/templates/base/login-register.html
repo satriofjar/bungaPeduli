@@ -38,8 +38,11 @@
                         <input type="password" class="form-control w-75" id="exampleInputEmail1" name="password">
                       </div>
                     </div>
+
+                    <a href="{% url 'register' %}" >Don’t have an account?</a>
+                    <br>  
     
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary my-4">Submit</button>
                     <br>
                     <br>
                   </form>
@@ -68,18 +71,20 @@
                   {{ form.email }}
                 </div>
                 
-                <div class="mb-3 pt-4">
+                <div class="mb-3">
                   <label class="form-label">Password</label>
                   {{ form.password1 }}
                 </div>
                 
-                <div class="mb-3 pt-4">
+                <div class="mb-3">
                   <label class="form-label">Confirm Password</label>
                   {{ form.password2 }}
                 </div>
 
+                <a href="{% url 'login' %}" >Have an account?</a>
+                <br> 
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary my-4">Submit</button>
                 <br>
                 <br>
               </form>

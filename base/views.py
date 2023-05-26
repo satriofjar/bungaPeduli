@@ -2,14 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
-from .models import Donation, User
-from .form import MyUserCreationForm, DonationForm
+from .models import Donation, User, Donator
+from .form import MyUserCreationForm, DonationForm, DonatorForm
 
 # Create your views here.
 def home(request):
     donations = Donation.objects.order_by('-collected')[:3]
-    print(donations)
 
     context = {
         'donations': donations,
@@ -17,12 +17,28 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 def list_donasi(request):
-    donasions = Donation.objects.all()
+    donations = Donation.objects.all()
     context = {
-        'donasions': donasions,
+        'donations': donations,
     }
 
     return render(request, 'base/list-donasi.html', context)
+
+def donasi(request, pk):
+    donation = Donation.objects.get(id=pk)
+    top_donator = donation.donator_set.order_by('amount').first()
+    latest_donator = donation.donator_set.order_by('-created').first()
+    print(latest_donator)
+
+
+    context = {
+        'donation': donation,
+        'top_donator': top_donator,
+        'latest_donator': latest_donator,
+
+    }
+
+    return render(request, 'base/donasi.html', context)
 
 def kategori(request):
     context = {
@@ -50,6 +66,46 @@ def form_galang_dana(request):
     }
 
     return render(request, 'base/form-galang-dana.html', context)
+
+
+@login_required(login_url='login')
+def form_donation(request, pk):
+    donation = Donation.objects.get(id=pk)
+    form = DonatorForm()
+
+    if request.method == 'POST':
+        form = DonatorForm(request.POST)
+
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.donation = donation
+            form.save()
+            print(f'ID:\t{form.id}')
+            return redirect(reverse('payment', kwargs={'pk1':donation.id, 'pk2':form.id}))
+
+    context = {
+        'donation': donation,
+        'form': form,
+    }
+
+    return render(request, 'base/form-donasi.html', context)
+
+
+def payment_success(request, pk1, pk2):
+
+    donation = Donation.objects.get(id=pk1)
+    donator = donation.donator_set.get(id=pk2)
+
+    donator.paid = True
+    donator.save()
+    donation.collected += donator.amount
+    donation.save()
+
+    context = {
+        'donator': donator,
+    }
+    return render(request, 'base/payment-success.html', context)
 
 
 def login_page(request):
@@ -81,6 +137,7 @@ def login_page(request):
 
     return render(request, 'base/login-register.html', context)
 
+@login_required()
 def logoutUser(request):
     logout(request)
     return redirect('home')

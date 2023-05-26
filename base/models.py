@@ -17,6 +17,9 @@ class User(AbstractUser):
         except:
             url = ''
         return url
+    
+    def __str__(self):
+        return self.username
 
 
     USERNAME_FIELD = 'email'
@@ -26,9 +29,10 @@ class User(AbstractUser):
 class Donation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200, null=True)
-    collected = models.BigIntegerField(null=True, blank=True)
+    collected = models.BigIntegerField(null=True, default=0)
     fund_target = models.BigIntegerField(null=True, blank=True)
     beneficiary = models.TextField(null=True)
+    fundraising_story =models.TextField(null=True)
     time_span = models.IntegerField(null=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -43,11 +47,23 @@ class Donation(models.Model):
             url = ''
         return url
 
+    def __str__(self):
+        return self.name
+
 
 class Donator(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    donation = models.ForeignKey(Donation, on_delete=models.CASCADE, null=True) 
+    CHOICHES = (
+        ('Dana', 'Dana'),
+        ('BCA/MANDIRI', 'BCA/MANDIRI')
+    )
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    donation = models.ForeignKey(Donation, on_delete=models.CASCADE, null=True, blank=True) 
     amount = models.BigIntegerField(null=True)
     comment = models.TextField(null=True, blank=True)
+    payment_method = models.CharField(choices=CHOICHES, max_length=100, null=True, blank=True)
     paid = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username

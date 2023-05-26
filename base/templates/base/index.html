@@ -66,7 +66,11 @@
             <img src="{{donation.imageURL}}" class="card-img-top mt-2" alt="">
             <div class="card-body">
               <h5 class="card-title">{{ donation.name|capfirst|truncatechars:25 }}</h5>
+              {% if donation.collected == None %}
+              <p>Rp - </p>
+              {% else %}
               <p>{{ donation.collected|rupiah_format }}</p>
+              {% endif %}
             </div>
           </div>
           {% endfor %}

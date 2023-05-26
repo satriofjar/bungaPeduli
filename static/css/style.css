@@ -171,28 +171,143 @@ a:focus {
 
 
 
-/* =======DONASI======= */
+/* =======LIST DONASI======= */
 
-#donasi .list-donasi .donasi img{
+#ldonasi .list-donasi .donasi img{
     max-width: 300px;
     margin: 0 auto;
 }
 
-#donasi .list-donasi .donasi h3{
+#ldonasi .list-donasi .donasi h3{
     color: #515151;
     font-weight: 700;
     font-size: 30px;
 }
 
-#donasi .list-donasi .donasi h4{
+#ldonasi .list-donasi .donasi h4{
     color: var(--mainColor);
     font-weight: 700;
     font-size: 25px;
 }
-#donasi .list-donasi .donasi p{
+#ldonasi .list-donasi .donasi p{
     color: #515151;
     font-weight: 600;
     font-size: 18px;
+}
+
+
+/* =======DONASI======= */
+
+#nav-donasi .navbar{
+    height: 60px;
+}
+
+#donasi{
+    background-color: var(--mainColor);
+}
+
+#donasi .detail-donasi{
+    background-color: #fff;
+    max-width: 1010px;
+    margin: 0 auto;
+}
+
+#donasi .detail-donasi h3{
+    color: #515151;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+#donasi .detail-donasi h4{
+    color: var(--mainColor);
+    font-weight: 700;
+    font-size: 25px;
+}
+
+#donasi .detail-donasi p{
+    color: #515151;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+#donasi .detail-donasi .btn-donasi{
+    background-color: var(--mainColor);
+    max-width: 700px;
+    height: 75px;
+    margin: 0 auto;
+}
+
+#donasi .detail-donasi .btn-donasi:hover{
+    background-color: #dd4d6f;
+}
+
+
+#donasi .detail-donasi .btn-donasi h3{
+    font-size: 40px;
+    font-weight: 800;
+    color: #fff;
+}
+
+
+#donasi .penggalang-dana{
+    background-color: #fff;
+    max-width: 1010px;
+    margin: 0 auto;
+}
+
+#donasi .penggalang-dana .title {
+    background-color: var(--mainColor);
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    max-width: 400px;
+    height: 75px;
+    margin: 0 auto;
+}
+
+#donasi .penggalang-dana img{
+    max-width: 70px;
+    height: auto;
+}
+
+#donasi .penggalang-dana .pdana{
+    font-size: 20px;
+    font-weight: 300;
+    color: #515151;
+}
+
+#donasi .penggalang-dana .donator h4{
+    background-color: var(--mainColor);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    max-width: 150px;
+    height: 55px;
+    margin: 0 auto;
+}
+
+#donasi .penggalang-dana .donator .box-donator{
+    background-color: #EAEAEA;
+    max-width: 400px;
+    margin: 0 auto;
+
+}
+
+#donasi .penggalang-dana .donator .box-donator .name{
+    font-size: 25px;
+    font-weight: 500;
+    color: #515151;
+}
+
+#donasi .penggalang-dana .donator .box-donator .name p{
+    font-size: 18px;
+    font-weight: 700;
+    color: #515151;
+}
+
+#donasi .penggalang-dana .donator .box-donator img{
+    max-width: 50px;
+    height: auto;
 }
 
 
@@ -218,11 +333,26 @@ a:focus {
 }
 
 
+/* =======GALANG DANA======= */
+
+
 #galang-dana .form-gdana .btn{
     background-color: var(--mainColor);
     border: none;
 
 }
+
+
+/* =======FORM DONATION======= */
+
+#fdonasi .form-gdana .btn{
+    background-color: var(--mainColor);
+    border: none;
+
+}
+
+
+/* =======LOGIN======= */
 
 #login .lcard{
     max-width: 450px;

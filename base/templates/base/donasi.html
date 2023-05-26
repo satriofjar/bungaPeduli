@@ -1,0 +1,128 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load rupiah_tags %}
+
+
+{% block content %}
+
+<div id="nav-donasi" class="container">
+    <nav class="navbar navbar-expand-lg bg-light pt-4 mt-2">
+      <div class="container-fluid main-color">
+
+        <a class="col-4" href="{% url 'list-donasi' %}"><img src="{% static 'img/arrow-pink.png' %}" alt=""></a>
+
+          <a class="navbar-brand" href="#">
+              <div class="d-flex">
+                <img src="{% static 'img/icon.png' %}" alt="Logo" width="39" height="33" class="d-inline-block align-text-top me-2 my-3">
+                <h3 class="ms-2"><b>BUNGA<br>PEDULI</b></h3>
+              </div>
+          </a>
+
+      </div>
+    </nav> 
+</div>
+
+  <section id="donasi">
+    <div class="container">
+        <div class="text-center my-3 pt-4">
+            <img src="{% static 'img/img-big.png' %}" class="img-fluid rounded-3" alt="">
+        </div>
+
+        <div class="detail-donasi rounded-3 pb-3 pt-5 my-4">
+            <div class="ps-5">
+                <h3>{{ donation.name }}</h3>
+
+                {% if donation.collected == None %}
+                <h4>Rp - </h4>
+                {% else %}
+                <h4>{{ donation.collected|rupiah_format }}</h4>
+                {% endif %}
+                <p>Terkumpul dari {{ donation.fund_target | rupiah_format }}</p>
+            </div>
+
+            <a href="{% url 'form-donasi' donation.id %}" class="btn-donasi text-center row rounded-3">
+                <h3 class="col mt-2">Donasi</h3>
+            </a>
+        </div>
+
+        <div class="penggalang-dana rounded-3 pb-5 my-4">
+                <div class="text-center">
+                    <h3 class="title rounded-bottom pt-3">Penggalang Dana</h3>
+                </div>
+
+            <div class="row mt-3 ms-5">
+                <div class="col-2">
+                    <img src="{% static 'img/image-7.png' %}" alt="">
+                </div>
+                <div class="col-10">
+                    <h3 class="mt-3 pt-2">{{ donation.user.name }}</h3>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="penggalang-dana rounded-3 pb-5 my-4">
+                <div class="text-center">
+                    <h3 class="title rounded-bottom pt-3">Penerima Dana</h3>
+                </div>
+
+            <div class="row mt-3 mx-5">
+                <p class="pdana">{{ donation.beneficiary }}</p>
+            </div>
+
+        </div>
+
+        <div class="penggalang-dana rounded-3 pb-5 my-4">
+                <div class="text-center">
+                    <h3 class="title rounded-bottom pt-3">Donasi</h3>
+                </div>
+
+            <div class="row mt-3 mx-5 mt-5 donator text-center">
+                <div class="col">
+                    <h4 class="py-3 rounded-4">Terbaru</h4>
+
+                    <div class="row text-start mt-5 box-donator rounded-4 py-3">
+                        <div class="col-2 pt-3">
+                            <img src="{% static 'img/profile.png' %}" alt="">
+                        </div>
+                        <div class="col-10 pt-3">
+                            <h3 class="name">{{ top_donator.user.username }}</h3>
+                            <p>Besaran donasi {{ top_donator.amount|rupiah_format }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="col">
+                    <h4 class="py-3 rounded-4">Terbesar</h4>
+
+                    <div class="row text-start mt-5 box-donator rounded-4 py-3">
+                        <div class="col-2 pt-3">
+                            <img src="{% static 'img/profile.png' %}" alt="">
+                        </div>
+                        <div class="col-10 pt-3">
+                            <h3 class="name">{{ latest_donator.user.username }}</h3>
+                            <p>Besaran donasi {{ latest_donator.amount|rupiah_format }}</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="penggalang-dana rounded-3 pb-5 my-4">
+            <div class="text-center">
+                <h3 class="title rounded-bottom pt-3">Cerita Penggalangan</h3>
+            </div>
+
+        <div class="row mt-3 mx-5">
+            <p class="pdana">{{ donation.fundraising_story }}</p>
+        </div>
+
+    </div>
+
+    </div>
+  </section>
+
+{% endblock content %}

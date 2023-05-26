@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section id="fdonasi">
+        <div class="nav-donasi mb-5 py-2">  
+            <div class="container">
+              <div class="row text-start">
+                <a class="col-4" href="{% url 'home' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
+                <h1 class="col-8 ps-5">FORM DONASI</h1>
+              </div>
+            </div>
+        </div>
+
+        <div class="container form-gdana">
+
+            <div class="text-center">
+                <img src="{% static 'img/img-big.png' %}" class="img-fluid" alt="">
+            </div>
+
+            <form method="post" class="ps-4 py-4" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Besar Donasi</label>
+                    {{ form.amount }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Komentar</label>
+                    {{ form.comment }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Payment Method</label>
+                    {{ form.payment_method }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+              </form>
+        </div>
+
+
+    </section>
+
+{% endblock content %}
