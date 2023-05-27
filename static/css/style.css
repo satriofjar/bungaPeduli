@@ -51,11 +51,6 @@ a:focus {
     color:    #fff !important;
 }
 
-#nav .profile p{
-    color: #515151;
-    font-size: 20px;
-}
-
 #nav .profile img{
     max-width: 40px;
     height: 40px;
@@ -65,6 +60,11 @@ a:focus {
     background-color: var(--mainColor);
     border: none;
 
+}
+
+#nav .profile a{
+    color: #515151;
+    font-size: 20px;
 }
 
 

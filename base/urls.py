@@ -9,6 +9,7 @@ urlpatterns = [
     path('donasi/<str:pk>/', views.donasi, name='donasi'),
     path('form-donasi/<str:pk>', views.form_donation, name='form-donasi'),
     path('payment-success/<str:pk1>/<str:pk2>', views.payment_success, name='payment'),
+    path('profile/', views.profile, name='profile'),
 
     path('login/', views.login_page, name='login'),
     path('logout/', views.logoutUser, name='logout'),

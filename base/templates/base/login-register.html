@@ -25,6 +25,15 @@
               {% if page == 'login' %}
                 <form method="post" class="ps-4 py-4">
                     {% csrf_token %}
+
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }} text-danger"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
                     <div class="mb-3">
                       <label for="inputEmail" class="form-label">Email</label>
                       <div class="">
@@ -50,6 +59,10 @@
               {% else %}
               <form method="post" class="ps-4 py-4">
                 {% csrf_token %}
+
+                {% for message in messages %}
+                    <p id="messages">{{message}}</p>
+                {% endfor %}
 
                 <div class="mb-3">
                   <label class="form-label">Name</label>

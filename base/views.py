@@ -108,6 +108,14 @@ def payment_success(request, pk1, pk2):
     return render(request, 'base/payment-success.html', context)
 
 
+@login_required(login_url='login')
+def profile(request):
+    context = {
+
+    }
+
+    return render(request, 'base/profile.html', context)
+
 def login_page(request):
 
     if request.user.is_authenticated:

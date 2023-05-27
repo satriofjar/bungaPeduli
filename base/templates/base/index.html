@@ -20,7 +20,8 @@
 
           {% if request.user.is_authenticated %}
           <div class="d-flex profile">
-            <p class="mt-1 me-2"><b>{{ request.user.username }}</b></p>
+            <a href="{% url 'profile' %}" class="mt-1 me-2"><b>{{ request.user.username }}</b></a>
+            <!-- <p class="mt-1 me-2"><b>{{ request.user.username }}</b></p> -->
             <img src="{% static 'img/profile.png' %}" alt="">
           </div>
           {% else %}

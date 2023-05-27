@@ -57,11 +57,11 @@ class Donator(models.Model):
         ('BCA/MANDIRI', 'BCA/MANDIRI')
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    donation = models.ForeignKey(Donation, on_delete=models.CASCADE, null=True, blank=True) 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    donation = models.ForeignKey(Donation, on_delete=models.CASCADE, null=True) 
     amount = models.BigIntegerField(null=True)
     comment = models.TextField(null=True, blank=True)
-    payment_method = models.CharField(choices=CHOICHES, max_length=100, null=True, blank=True)
+    payment_method = models.CharField(choices=CHOICHES, max_length=100, null=True)
     paid = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
