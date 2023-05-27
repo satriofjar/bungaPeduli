@@ -60,9 +60,13 @@
               <form method="post" class="ps-4 py-4">
                 {% csrf_token %}
 
-                {% for message in messages %}
-                    <p id="messages">{{message}}</p>
-                {% endfor %}
+                {% if messages %}
+                  <ul class="messages">
+                      {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }} text-danger"{% endif %}>{{ message }}</li>
+                      {% endfor %}
+                  </ul>
+              {% endif %}
 
                 <div class="mb-3">
                   <label class="form-label">Name</label>

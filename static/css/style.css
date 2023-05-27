@@ -19,7 +19,7 @@ html, body{
     margin: 0;
 }
 
-body a {
+a {
     text-decoration: none;
     transition: 0.5s;
 }
@@ -47,8 +47,12 @@ a:focus {
     background-color: var(--mainColor);
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #fff !important;
+#nav input::placeholder {
+    color: #fff;
+}
+
+#nav input[type="search"]{
+    color: #fff;
 }
 
 #nav .profile img{
@@ -143,6 +147,7 @@ a:focus {
     font-size: 35px;
 }
 
+
 #top .card-donasi{
     position: relative;
     max-width: 250px;
@@ -159,6 +164,14 @@ a:focus {
     transform: translateX(-50%);
 }
 
+#top .card-donasi .img-top{
+    max-height: 150px;
+}
+
+#top .card-donasi .card-body a{
+    color: black;
+}
+
 #top .card-donasi .card-title{
     font-size: 14px;
     font-weight: 700;
@@ -173,8 +186,40 @@ a:focus {
 
 /* =======LIST DONASI======= */
 
+#ldonasi #nav {
+    background-color: var(--mainColor);
+}
+
+
+#ldonasi #nav h3{
+    color: #fff;
+}
+
+#ldonasi #nav img{
+    max-width: 50px;
+    height: 50px;
+}
+
+#ldonasi #nav input{
+    background-color: #fff;
+}
+
+#ldonasi #nav .profile a{
+    color: #fff;
+    font-size: 20px;
+}
+
+#ldonasi #nav input::placeholder {
+    color: #000000;
+}
+
+#ldonasi #nav input[type="search"]{
+    color: #000000;
+}
+
 #ldonasi .list-donasi .donasi img{
     max-width: 300px;
+    max-height: 150px;
     margin: 0 auto;
 }
 

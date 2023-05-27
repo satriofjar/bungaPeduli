@@ -11,7 +11,7 @@
 
         <a class="col-4" href="{% url 'list-donasi' %}"><img src="{% static 'img/arrow-pink.png' %}" alt=""></a>
 
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{% url 'home' %}">
               <div class="d-flex">
                 <img src="{% static 'img/icon.png' %}" alt="Logo" width="39" height="33" class="d-inline-block align-text-top me-2 my-3">
                 <h3 class="ms-2"><b>BUNGA<br>PEDULI</b></h3>
@@ -79,7 +79,9 @@
 
             <div class="row mt-3 mx-5 mt-5 donator text-center">
                 <div class="col">
-                    <h4 class="py-3 rounded-4">Terbaru</h4>
+                    <h4 class="py-3 rounded-4">Terbesar</h4>
+
+                    {% if top_donator != None %}
 
                     <div class="row text-start mt-5 box-donator rounded-4 py-3">
                         <div class="col-2 pt-3">
@@ -91,10 +93,14 @@
                         </div>
                     </div>
 
+                    {% endif %}
+
                 </div>
                 
                 <div class="col">
-                    <h4 class="py-3 rounded-4">Terbesar</h4>
+                    <h4 class="py-3 rounded-4">Terbaru</h4>
+
+                    {% if latest_donator != None %}
 
                     <div class="row text-start mt-5 box-donator rounded-4 py-3">
                         <div class="col-2 pt-3">
@@ -105,6 +111,8 @@
                             <p>Besaran donasi {{ latest_donator.amount|rupiah_format }}</p>
                         </div>
                     </div>
+
+                    {% endif %}
 
                 </div>
             </div>

@@ -14,14 +14,13 @@
               </div>
           </a>
 
-          <form role="search">
-              <input class="form-control me-2 rounded-pill" type="search" placeholder="Cari Donasi" aria-label="Search">
-          </form>
+          <form role="search" method="get" action="{% url 'list-donasi' %}">
+            <input class="form-control me-2 rounded-pill" type="search" name="q" placeholder="Cari Donasi" aria-label="Search">
+        </form>
 
           {% if request.user.is_authenticated %}
           <div class="d-flex profile">
             <a href="{% url 'profile' %}" class="mt-1 me-2"><b>{{ request.user.username }}</b></a>
-            <!-- <p class="mt-1 me-2"><b>{{ request.user.username }}</b></p> -->
             <img src="{% static 'img/profile.png' %}" alt="">
           </div>
           {% else %}
@@ -64,9 +63,9 @@
 
           {% for donation in donations %}
           <div class="card card-donasi mx-4 rounded-4 col" style="width: 18rem;">
-            <img src="{{donation.imageURL}}" class="card-img-top mt-2" alt="">
+            <img src="{{donation.imageURL}}" class="img-top mt-2" alt="">
             <div class="card-body">
-              <h5 class="card-title">{{ donation.name|capfirst|truncatechars:25 }}</h5>
+              <a href="{% url 'donasi' donation.id %}"><h5 class="card-title">{{ donation.name|capfirst|truncatechars:25 }}</h5></a>
               {% if donation.collected == None %}
               <p>Rp - </p>
               {% else %}

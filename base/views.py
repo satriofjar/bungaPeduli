@@ -17,7 +17,9 @@ def home(request):
     return render(request, 'base/index.html', context)
 
 def list_donasi(request):
-    donations = Donation.objects.all()
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    donations = Donation.objects.filter(name__icontains=q)
+
     context = {
         'donations': donations,
     }
@@ -26,10 +28,8 @@ def list_donasi(request):
 
 def donasi(request, pk):
     donation = Donation.objects.get(id=pk)
-    top_donator = donation.donator_set.order_by('amount').first()
+    top_donator = donation.donator_set.order_by('-amount').first()
     latest_donator = donation.donator_set.order_by('-created').first()
-    print(latest_donator)
-
 
     context = {
         'donation': donation,
