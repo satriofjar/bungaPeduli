@@ -28,6 +28,7 @@ class DonationForm(ModelForm):
         self.fields['name'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['fund_target'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['beneficiary'].widget.attrs.update({'class': 'form-control w-75'})
+        self.fields['category'].widget.attrs.update({'class': 'form-control w-25'})
         self.fields['fundraising_story'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['time_span'].widget.attrs.update({'class': 'form-control w-75'})
         self.fields['thumbnail'].widget.attrs.update({'class': 'form-control w-75'})

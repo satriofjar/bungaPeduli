@@ -27,13 +27,19 @@ class User(AbstractUser):
 
 
 class Donation(models.Model):
+    CATEGORIES = (
+        ('kesehatan', 'Kesehatan'),
+        ('pendidikan', 'Pendidikan'),
+        ('bencana-alam', 'Bencana Alam')
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=200, null=True)
     collected = models.BigIntegerField(null=True, default=0)
     fund_target = models.BigIntegerField(null=True, blank=True)
-    beneficiary = models.TextField(null=True)
+    beneficiary = models.CharField(max_length=200, null=True)
     fundraising_story =models.TextField(null=True)
     time_span = models.IntegerField(null=True)
+    category = models.CharField(max_length=200, choices=CATEGORIES, null=True)
     created = models.DateTimeField(auto_now_add=True)
 
     thumbnail = models.ImageField(blank=True, null=True, validators=[validate_file_size])

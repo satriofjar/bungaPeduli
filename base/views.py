@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.db.models import Q
 
 from .models import Donation, User, Donator
 from .form import MyUserCreationForm, DonationForm, DonatorForm
@@ -18,7 +19,10 @@ def home(request):
 
 def list_donasi(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-    donations = Donation.objects.filter(name__icontains=q)
+    donations = Donation.objects.filter(
+        Q(name__icontains=q) |
+        Q(category=q)
+        )
 
     context = {
         'donations': donations,
@@ -110,8 +114,11 @@ def payment_success(request, pk1, pk2):
 
 @login_required(login_url='login')
 def profile(request):
-    context = {
+    user = request.user
+    donators = Donator.objects.filter(user=user)
 
+    context = {
+        'donators':donators,
     }
 
     return render(request, 'base/profile.html', context)

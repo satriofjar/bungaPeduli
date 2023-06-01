@@ -217,6 +217,13 @@ a:focus {
     color: #000000;
 }
 
+#ldonasi .categories a{
+    background-color: var(--mainColor);
+    max-width: 150px;
+    color: #fff;
+    margin: 0 auto;
+}
+
 #ldonasi .list-donasi .donasi img{
     max-width: 300px;
     max-height: 150px;
@@ -436,6 +443,49 @@ a:focus {
     background-color: var(--mainColor);
     border: none;
 
+}
+
+/* #profile .body-prof{
+    background-color: var(--mainColor);
+} */
+
+#profile .body-prof .user-donasi{
+    background-color: #fff;
+}
+
+#profile .body-prof .user-donasi .title{
+    background-color: var(--mainColor);
+    color: #fff;
+    font-size: 35px;
+    font-weight: 700;
+    max-width: 400px;
+    height: 75px;
+    margin: 0 auto;
+}
+
+
+#profile .body-prof .user-donasi .box-donator{
+    background-color: #EAEAEA;
+    max-width: 400px;
+    margin: 0 auto;
+
+}
+
+#profile .body-prof .user-donasi .box-donator .name{
+    font-size: 25px;
+    font-weight: 500;
+    color: #515151;
+}
+
+#profile .body-prof .user-donasi .box-donator .name p{
+    font-size: 18px;
+    font-weight: 700;
+    color: #515151;
+}
+
+#profile .body-prof .user-donasi .box-donator img{
+    max-width: 50px;
+    height: auto;
 }
 
 

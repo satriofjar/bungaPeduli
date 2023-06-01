@@ -38,28 +38,48 @@
 
 
     <div class="container my-4">
-      <div class="list-donasi">
+      <div class="row">
 
-        {% for donation in donations %}
-
-        <div class="donasi my-3">
-          <div class="row ms-5">
-            <div class="col-4 text-end">
-              <img src="{{ donation.imageURL }}" alt="" class="img-fluid rounded-4">
-            </div>
-            <div class="col-8">
-              <a href="{% url 'donasi' donation.id %}"><h3>{{ donation.name|capfirst }}</h3></a>
-              <h4>{{ donation.collected | rupiah_format  }}</h4>
-              <div class="row">
-              <p class="col">Terkumpul dari {{ donation.fund_target | rupiah_format }}</p>
-              <p class="col">{{ donation.time_span }} hari</p>
-              </div>
-            </div>
-          </div>
+        <div class="col-2 categories">
+              <a href="{% url 'list-donasi' %}" class="btn-donasi text-center row rounded-3 my-2">
+                <h6 class="col mt-2">All</h6>
+              </a>
+              <a href="{% url 'list-donasi' %}?q=kesehatan" class="btn-donasi text-center row rounded-3 my-2">
+                <h6 class="col mt-2">Kesehatan</h6>
+              </a>
+              <a href="{% url 'list-donasi' %}?q=pendidikan" class="btn-donasi text-center row rounded-3 my-2">
+                <h6 class="col mt-2">Pendidikan</h6>
+              </a>
+              <a href="{% url 'list-donasi' %}?q=bencana-alam" class="btn-donasi text-center row rounded-3 my-2">
+                <h6 class="col mt-2">Bencana Alam</h6>
+              </a>
         </div>
 
-        {% endfor %}
+        <div class="col-10">
+          <div class="list-donasi">
 
+            {% for donation in donations %}
+    
+            <div class="donasi my-3">
+              <div class="row ms-5">
+                <div class="col-4 text-end">
+                  <img src="{{ donation.imageURL }}" alt="" class="img-fluid rounded-4">
+                </div>
+                <div class="col-8">
+                  <a href="{% url 'donasi' donation.id %}"><h3>{{ donation.name|capfirst }}</h3></a>
+                  <h4>{{ donation.collected | rupiah_format  }}</h4>
+                  <div class="row">
+                  <p class="col">Terkumpul dari {{ donation.fund_target | rupiah_format }}</p>
+                  <p class="col">{{ donation.time_span }} hari</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            {% endfor %}
+    
+          </div>
+        </div>
       </div>
 
     </div>

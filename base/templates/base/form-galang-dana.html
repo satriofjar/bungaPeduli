@@ -7,7 +7,7 @@
         <div class="nav-donasi mb-5 py-2">  
             <div class="container">
               <div class="row text-start">
-                <a class="col-3" href="{% url 'kategori' %}"><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
+                <a class="col-3" href=""><img src="{% static 'img/arrow-back.png' %}" alt=""></a>
                 <h1 class="col-9 ps-5">FORM GALANG DANA</h1>
               </div>
             </div>
@@ -39,6 +39,11 @@
                 <div class="mb-3 pt-4">
                   <label class="form-label">Penerima Dana</label>
                   {{ form.beneficiary }}
+                </div>
+
+                <div class="mb-3 pt-4">
+                  <label class="form-label">Kategori</label>
+                  {{ form.category }}
                 </div>
 
                 <div class="mb-3 pt-4">
